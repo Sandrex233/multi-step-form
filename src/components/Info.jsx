@@ -31,9 +31,8 @@ const Info = ({ setIndex }) => {
                         <button type='submit' onClick={nextStep} className='bg-[#02295A] hover:opacity-90 rounded-lg text-white p-3'>Next Step</button>
                     </div>
                 </form >
-
-            </div >
-        </div >
+            </div>
+        </div>
     )
 }
 

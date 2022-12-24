@@ -19,8 +19,8 @@ The designs were created to the following widths:
 
 ### Neutral
 
-- Cool gray: hsl(231, 11%, 63%)
-- Light gray: hsl(229, 24%, 87%)
+- Cool gray: hsl(231, 11%, 63%) 
+- Light gray: hsl(229, 24%, 87%) #D6D9E6
 - Magnolia: hsl(217, 100%, 97%)
 - Alabaster: hsl(231, 100%, 99%)
 - White: hsl(0, 0%, 100%)
