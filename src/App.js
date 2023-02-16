@@ -16,7 +16,6 @@ const App = () => {
   const [stepOneErrors, setStepOneErrors] = useState({});
 
 
-
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
@@ -31,7 +30,9 @@ const App = () => {
 
 
   useEffect(() => {
+    // Check if name field has a value and if there's an error associated with it
     if (name && stepOneErrors.name) {
+      // If error, clear it by setting the 'name' property of 'stepOneErrors' to an empty string
       setStepOneErrors((prevState) => ({
         ...prevState,
         name: '',

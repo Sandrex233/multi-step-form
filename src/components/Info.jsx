@@ -58,9 +58,9 @@ const Info = ({ setIndex, name, email, phone, stepOneErrors, setStepOneErrors, o
                     <div className='translate-x-[10.8rem] mt-10'>
                         <button type='submit' onClick={handleStepOneNext} className='bg-[#02295A] hover:opacity-90 rounded-lg text-white p-3'>Next Step</button>
                     </div>
-                </form >
-            </div >
-        </div >
+                </form>
+            </div>
+        </div>
     )
 }
 
