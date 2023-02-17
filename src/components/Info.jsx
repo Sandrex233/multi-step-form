@@ -37,7 +37,7 @@ const Info = ({ setIndex, name, email, phone, stepOneErrors, setStepOneErrors, o
                     <div className='space-y-10'>
                         <div className='space-y-4'>
                             <div className='flex flex-row justify-between'><h3>Name</h3><div>{stepOneErrors.name && <span className='text-red-500 text-[.95rem]'>{stepOneErrors.name}</span>}</div></div>
-                            <input type="text" value={name}
+                            <input type="text" value={name} placeholder='e.g. Stephen King'
                                 className={`w-[28rem] peer px-3 h-[2.6rem] focus:outline-none focus:border-0 focus:ring-1 focus:ring-[#473DFF] border border-[#9699AB] rounded-md form-input ${stepOneErrors.name ? 'focus:ring-red-500 border-red-500' : ''}`}
                                 onChange={onNameChange} required />
 
