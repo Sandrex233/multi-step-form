@@ -6,8 +6,6 @@ import Summary from './components/Summary'
 import Sidebar from './components/Sidebar'
 
 
-
-
 const App = () => {
   const [index, setIndex] = useState(0)
   const [name, setName] = useState('');
@@ -16,10 +14,16 @@ const App = () => {
   const [stepOneErrors, setStepOneErrors] = useState({});
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [yearlyBilling, setYearlyBilling] = useState(false);
+  const [selectedAddons, setSelectedAddons] = useState([]);
+
 
   const handleNameChange = (event) => {
     setName(event.target.value);
+    console.log([event.target.value])
   };
+
+
+
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -29,7 +33,7 @@ const App = () => {
     setPhone(event.target.value);
   };
 
-
+  // clears any validation errors that were previously displayed
   useEffect(() => {
     // Check if name field has a value and if there's an error associated with it
     if (name && stepOneErrors.name) {
@@ -81,8 +85,19 @@ const App = () => {
             yearlyBilling={yearlyBilling}
             setYearlyBilling={setYearlyBilling}
           />}
-        {index === 2 && <Addons index={index} setIndex={setIndex} />}
-        {index === 3 && <Summary />}
+        {index === 2 &&
+          <Addons
+            setIndex={setIndex}
+            yearlyBilling={yearlyBilling}
+            selectedAddons={selectedAddons}
+            setSelectedAddons={setSelectedAddons}
+          />}
+        {index === 3 &&
+          <Summary
+            yearlyBilling={yearlyBilling}
+            selectedPlan={selectedPlan}
+            selectedAddons={selectedAddons}
+          />}
       </div>
     </div>
   )
