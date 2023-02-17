@@ -4,7 +4,6 @@ import Advanced from '../assets/images/icon-advanced.svg'
 import Pro from '../assets/images/icon-pro.svg'
 
 const Plan = ({ setIndex, selectedPlan, setSelectedPlan, yearlyBilling, setYearlyBilling }) => {
-
     const planOptions = [
         { title: 'Arcade', price: yearlyBilling ? '$90/yr' : '$9/mo', savings: yearlyBilling ? '2 months free' : null, id: 'arcade', image: Arcade },
         { title: 'Advanced', price: yearlyBilling ? '$120/yr' : '$12/mo', savings: yearlyBilling ? '2 months free' : null, id: 'advanced', image: Advanced },
@@ -13,7 +12,6 @@ const Plan = ({ setIndex, selectedPlan, setSelectedPlan, yearlyBilling, setYearl
 
     const handlePlanSelect = (id) => {
         setSelectedPlan(id);
-        localStorage.setItem('selectedPlan', id); // Save the selected plan to local storage
     };
 
     const handleBillingSelect = () => {
@@ -39,7 +37,7 @@ const Plan = ({ setIndex, selectedPlan, setSelectedPlan, yearlyBilling, setYearl
                 {planOptions.map((planOption) => (
                     <div
                         key={planOption.id}
-                        className={`border rounded-lg p-4 w-36 cursor-pointer ${selectedPlan === planOption.id ? 'border-[#473DFF] bg-[#2921cc0e]' : 'border-gray-200'
+                        className={`border not-selectable rounded-lg p-4 w-36 cursor-pointer  ${selectedPlan === planOption.id ? 'border-[#473DFF] bg-[#2921cc0e]' : 'border-gray-200 hover:border-[#473DFF]'
                             }`}
                         onClick={() => handlePlanSelect(planOption.id)}
                     >
