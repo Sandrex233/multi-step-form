@@ -1,50 +1,61 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Arcade from '../assets/images/icon-arcade.svg'
 import Advanced from '../assets/images/icon-advanced.svg'
 import Pro from '../assets/images/icon-pro.svg'
 
-const Plan = () => {
-    const [selectedPlan, setSelectedPlan] = useState(null);
-    const [yearlyBilling, setYearlyBilling] = useState(false);
+const Plan = ({ setIndex, selectedPlan, setSelectedPlan, yearlyBilling, setYearlyBilling }) => {
 
     const planOptions = [
-        { title: 'Arcade', price: yearlyBilling ? '$90 / year' : '$9 / month', savings: yearlyBilling ? '2 months free' : null, id: 'arcade', image: Arcade },
-        { title: 'Advanced', price: yearlyBilling ? '$120 / year' : '$12 / month', savings: yearlyBilling ? '2 months free' : null, id: 'advanced', image: Advanced },
-        { title: 'Pro', price: yearlyBilling ? '$150 / year' : '$15 / month', savings: yearlyBilling ? '2 months free' : null, id: 'pro', image: Pro },
+        { title: 'Arcade', price: yearlyBilling ? '$90/yr' : '$9/mo', savings: yearlyBilling ? '2 months free' : null, id: 'arcade', image: Arcade },
+        { title: 'Advanced', price: yearlyBilling ? '$120/yr' : '$12/mo', savings: yearlyBilling ? '2 months free' : null, id: 'advanced', image: Advanced },
+        { title: 'Pro', price: yearlyBilling ? '$150/yr' : '$15/mo', savings: yearlyBilling ? '2 months free' : null, id: 'pro', image: Pro },
     ];
 
     const handlePlanSelect = (id) => {
         setSelectedPlan(id);
+        localStorage.setItem('selectedPlan', id); // Save the selected plan to local storage
     };
 
     const handleBillingSelect = () => {
         setYearlyBilling(!yearlyBilling);
     };
 
+    const handleStepTwoBack = () => {
+        setIndex(0);
+    };
+
+    const handleStepTwoNext = () => {
+        setIndex(2);
+    };
+
 
     return (
-        <div className="flex justify-center items-center flex-col mx-auto">
-            <div className="max-w-lg grid grid-cols-3 gap-4">
+        <div className="flex justify-center items-center flex-col mx-auto p-10">
+            <div className='space-y-3 flex flex-col self-start mb-14'>
+                <h1 className='text-[#02295A] text-4xl font-bold'>Select your plan</h1>
+                <p className='text-[#9699AB] text-lg font-normal'>You have the option of monthly or yearly billing.</p>
+            </div>
+            <div className='max-w-lg grid grid-cols-3 gap-5'>
                 {planOptions.map((planOption) => (
                     <div
                         key={planOption.id}
-                        className={`border rounded-lg p-4 cursor-pointer ${selectedPlan === planOption.id ? 'border-green-600' : 'border-gray-200'
+                        className={`border rounded-lg p-4 w-36 cursor-pointer ${selectedPlan === planOption.id ? 'border-[#473DFF] bg-[#2921cc0e]' : 'border-gray-200'
                             }`}
                         onClick={() => handlePlanSelect(planOption.id)}
                     >
-                        <div className="flex justify-between items-center">
-                            <h3 className="text-lg font-medium">{planOption.title}</h3>
-                            <img src={planOption.image} alt={planOption.title} className="h-8 w-8" />
+                        <div className="flex flex-col">
+                            <img src={planOption.image} alt={planOption.title} className="h-12 w-10" />
+                            <h3 className="text-lg font-medium mt-5 text-[#02295A] ">{planOption.title}</h3>
                         </div>
-                        <p className="mt-2 text-gray-500">{planOption.price}</p>
-                        {yearlyBilling && <span className="text-green-600 text-sm font-medium">2 months free</span>}
+                        <p className="text-gray-500">{planOption.price}</p>
+                        {yearlyBilling && <span className="text-[#02295A] text-sm font-medium">2 months free</span>}
                     </div>
                 ))}
             </div>
-            <div className="col-span-3 flex justify-center items-center">
+            <div className="col-span-3 bg-[#F0F6FF] w-full flex justify-center p-2 rounded-md items-center mt-10">
                 <label htmlFor="billing-toggle" className="inline-flex items-center cursor-pointer">
                     <div
-                        className={`text-sm font-medium ${!yearlyBilling ? "font-extrabold" : ""
+                        className={`text-sm leading-tight ${yearlyBilling ? "text-gray-500 font-medium" : "font-bold text-[#02295A] "
                             } mr-4`}
                     >
                         Monthly
@@ -61,66 +72,21 @@ const Plan = () => {
                         />
                     </div>
                     <div
-                        className={`text-sm font-medium ${yearlyBilling ? "font-extrabold" : ""
+                        className={`text-sm leading-tight ${yearlyBilling ? "font-bold text-[#02295A]" : "text-gray-600 font-medium"
                             } ml-4`}
                     >
                         Yearly
                     </div>
                 </label>
+            </div >
+            <div className="mt-28">
+                <div className="flex flex-row justify-between space-x-72">
+                    <button type='submit' onClick={handleStepTwoBack} className="bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg focus:outline-none">Go Back</button>
+                    <button type='submit' onClick={handleStepTwoNext} className='bg-[#02295A] hover:opacity-90 rounded-lg text-white p-3'>Next Step</button>
+                </div>
             </div>
         </div >
-
-
     );
-
 };
-
-{/* <div className='flex justify-center items-center flex-col mx-auto'>
-            <div className="flex justify-center items-start p-10 space-y-10 flex-col mx-auto">
-                <div className='space-y-3'>
-                    <h1 className='text-[#02295A] text-4xl font-bold'>Select your plan</h1>
-                    <p className='text-[#9699AB] text-lg font-normal'>You have the option of monthly or yearly billing.</p>
-                </div>
-                <div className='hidden md:grid md:grid-cols-3 gap-4'>
-                    <div
-                        className='container flex flex-col border w-40 h-44 items-start cursor-pointer hover:border-[#473DFF] rounded-md '>
-                        <img src={Arcade} alt="Arcade" className='p-4' />
-                        <span className='mt-5 ml-5 text-lg  text-start font-normal text-[#02295A]'>
-                            {plans[0].name}
-                        </span>
-                    </div>
-
-                    <div
-                        className='container flex flex-col border items-start cursor-pointer hover:border-[#473DFF] rounded-md'>
-                        <img src={Advanced} alt="Advanced" className='p-4' />
-                        <span className='mt-5 ml-5 text-lg text-start font-normal text-[#02295A]'>
-                            Advanced
-                        </span>
-                    </div>
-
-                    <div
-                        className='container flex flex-col border items-start cursor-pointer hover:bg-[#473dff21] hover:border-[#473DFF] rounded-md'>
-                        <img src={Pro} alt="Pro" className='p-4' />
-                        <span className='mt-5 ml-5 text-lg text-start font-normal text-[#02295A]'>
-                            Pro
-                        </span>
-                    </div>
-                </div>
-                <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    {plans.map((plan) => (
-                        <div
-                            key={plan.name}
-                            className={`bg-white rounded-lg shadow-md p-6 flex-grow ${selectedPlan.name === plan.name ? 'border-2 border-green-400' : 'border'
-                                }`}
-                            onClick={() => handlePlanChange(plan)}
-                        >
-                            <h2 className="font-medium text-lg mb-2">{plan.name}</h2>
-                            <p className="text-gray-500 mb-4">${plan.monthlyPrice}/mo</p>
-                            {isYearlyBilling && <p className="text-sm text-gray-500 mb-2">2 months free!</p>}
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div> */}
 
 export default Plan

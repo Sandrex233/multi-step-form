@@ -14,7 +14,8 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [stepOneErrors, setStepOneErrors] = useState({});
-
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [yearlyBilling, setYearlyBilling] = useState(false);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -72,7 +73,14 @@ const App = () => {
             onPhoneChange={handlePhoneChange}
             setIndex={setIndex}
           />}
-        {index === 1 && <Plan index={index} setIndex={setIndex} />}
+        {index === 1 &&
+          <Plan
+            setIndex={setIndex}
+            selectedPlan={selectedPlan}
+            setSelectedPlan={setSelectedPlan}
+            yearlyBilling={yearlyBilling}
+            setYearlyBilling={setYearlyBilling}
+          />}
         {index === 2 && <Addons index={index} setIndex={setIndex} />}
         {index === 3 && <Summary />}
       </div>
