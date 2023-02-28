@@ -12,9 +12,9 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [stepOneErrors, setStepOneErrors] = useState({});
-  const [selectedPlan, setSelectedPlan] = useState(null);
   const [yearlyBilling, setYearlyBilling] = useState(false);
-  const [selectedAddons, setSelectedAddons] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState('arcade');
+  const [selectedAddons, setSelectedAddons] = useState(['larger-storage', 'online-service']);
 
 
   const handleNameChange = (event) => {

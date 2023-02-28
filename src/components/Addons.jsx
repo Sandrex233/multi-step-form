@@ -54,7 +54,6 @@ const Addons = ({ yearlyBilling, setIndex, selectedAddons, setSelectedAddons }) 
                                 <div className="mt-2 text-gray-500 text-sm">+{yearlyBilling ? addonOption.yearlyPrice : addonOption.monthlyPrice}</div>
                             </div>
                         </div>
-
                     </div>
                 ))}
             </div>
