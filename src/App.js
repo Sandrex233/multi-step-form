@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Info from './components/Info'
+import PersonalInfo from './components/PersonalInfo'
 import Plan from './components/Plan'
 import Addons from './components/Addons'
 import Summary from './components/Summary'
@@ -21,9 +21,6 @@ const App = () => {
     setName(event.target.value);
     console.log([event.target.value])
   };
-
-
-
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -66,7 +63,7 @@ const App = () => {
           setIndex={setIndex}
         />
         {index === 0 &&
-          <Info
+          <PersonalInfo
             name={name}
             email={email}
             phone={phone}

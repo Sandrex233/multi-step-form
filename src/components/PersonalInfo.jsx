@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Info = ({ setIndex, name, email, phone, stepOneErrors, setStepOneErrors, onNameChange, onEmailChange, onPhoneChange }) => {
+const PersonalInfo = ({ setIndex, name, email, phone, stepOneErrors, setStepOneErrors, onNameChange, onEmailChange, onPhoneChange }) => {
     const validateEmail = (email) => {
         // simple email validation regex
         const emailRegex = /^\S+@\S+\.\S+$/;
@@ -64,4 +64,4 @@ const Info = ({ setIndex, name, email, phone, stepOneErrors, setStepOneErrors, o
     )
 }
 
-export default Info
+export default PersonalInfo

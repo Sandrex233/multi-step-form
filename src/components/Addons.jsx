@@ -1,11 +1,13 @@
 import React from 'react'
+import { addonOptions } from '../data/AddonOptions'
+
 
 const Addons = ({ yearlyBilling, setIndex, selectedAddons, setSelectedAddons }) => {
-    const addonOptions = [
-        { id: 'online-service', title: 'Online Service', price: yearlyBilling ? '$10/yr' : '$1/mo', },
-        { id: 'larger-storage', title: 'Larger Storage', price: yearlyBilling ? '$20/yr' : '$2/mo', },
-        { id: 'custom-profile', title: 'Customizable Profile', price: yearlyBilling ? '$20/yr' : '$2/mo', },
-    ];
+    // const addonOptions = [
+    //     { id: 'online-service', title: 'Online Service', price: yearlyBilling ? '$10/yr' : '$1/mo', },
+    //     { id: 'larger-storage', title: 'Larger Storage', price: yearlyBilling ? '$20/yr' : '$2/mo', },
+    //     { id: 'custom-profile', title: 'Customizable Profile', price: yearlyBilling ? '$20/yr' : '$2/mo', },
+    // ];
 
     const handleAddonToggle = (addonId) => {
         setSelectedAddons((prevSelectedAddons) => {
@@ -49,11 +51,8 @@ const Addons = ({ yearlyBilling, setIndex, selectedAddons, setSelectedAddons }) 
                                 <label htmlFor={addonOption.id} className="block text-sm  cursor-pointer leading-5 font-medium text-gray-700">
                                     {addonOption.title}
                                 </label>
-                                {addonOption.price && (
-                                    <div className="mt-2 text-gray-500 text-sm">+{addonOption.price}</div>
-                                )}
+                                <div className="mt-2 text-gray-500 text-sm">+{yearlyBilling ? addonOption.yearlyPrice : addonOption.monthlyPrice}</div>
                             </div>
-
                         </div>
 
                     </div>

@@ -1,14 +1,7 @@
 import React from 'react'
-import Arcade from '../assets/images/icon-arcade.svg'
-import Advanced from '../assets/images/icon-advanced.svg'
-import Pro from '../assets/images/icon-pro.svg'
+import { planOptions } from '../data/PlanOptions'
 
 const Plan = ({ setIndex, selectedPlan, setSelectedPlan, yearlyBilling, setYearlyBilling }) => {
-    const planOptions = [
-        { title: 'Arcade', price: yearlyBilling ? '$90/yr' : '$9/mo', savings: yearlyBilling ? '2 months free' : null, id: 'arcade', image: Arcade },
-        { title: 'Advanced', price: yearlyBilling ? '$120/yr' : '$12/mo', savings: yearlyBilling ? '2 months free' : null, id: 'advanced', image: Advanced },
-        { title: 'Pro', price: yearlyBilling ? '$150/yr' : '$15/mo', savings: yearlyBilling ? '2 months free' : null, id: 'pro', image: Pro },
-    ];
 
     const handlePlanSelect = (id) => {
         setSelectedPlan(id);
@@ -45,7 +38,7 @@ const Plan = ({ setIndex, selectedPlan, setSelectedPlan, yearlyBilling, setYearl
                             <img src={planOption.image} alt={planOption.title} className="h-12 w-10" />
                             <h3 className="text-lg font-medium mt-5 text-[#02295A] ">{planOption.title}</h3>
                         </div>
-                        <p className="text-gray-500">{planOption.price}</p>
+                        <p className="text-gray-500">{yearlyBilling ? planOption.yearlyPrice : planOption.monthlyPrice}</p>
                         {yearlyBilling && <span className="text-[#02295A] text-sm font-medium">2 months free</span>}
                     </div>
                 ))}
