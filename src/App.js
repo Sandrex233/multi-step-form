@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PersonalInfo from './components/PersonalInfo'
-import Plan from './components/Plan'
-import Addons from './components/Addons'
-import Summary from './components/Summary'
+import Plan from './components/Plans/Plan'
+import Addons from './components/Addons/Addons'
+import Summary from './components/Summary/Summary'
 import Sidebar from './components/Sidebar'
 
 
@@ -94,6 +94,7 @@ const App = () => {
             yearlyBilling={yearlyBilling}
             selectedPlan={selectedPlan}
             selectedAddons={selectedAddons}
+            setIndex={setIndex}
           />}
       </div>
     </div>
