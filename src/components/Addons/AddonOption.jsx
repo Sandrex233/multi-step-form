@@ -29,7 +29,7 @@ const AddonOption = ({ addonOption, setSelectedAddons, selectedAddons, yearlyBil
                     onChange={() => handleAddonToggle(addonOption.id)}
                 />
                 <div
-                    className={`h-4 w-4 flex items-center justify-center border-gray-500 rounded-sm border border-transparent ${selectedAddons.includes(addonOption.id)
+                    className={`h-4 w-4 flex items-center justify-center border-gray-500 rounded-sm border  ${selectedAddons.includes(addonOption.id)
                         ? 'bg-[#473DFF] border-[#473DFF]'
                         : 'hover:bg-gray-100'
                         } cursor-pointer`}
